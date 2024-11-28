@@ -1,2 +1,25 @@
-<p>login works!</p>
-<button routerLink="/dashboard">login</button>
+
+<div class="mainContainer bg-warning-subtle d-flex justify-content-center align-items-center ">
+
+  <form action="" [formGroup]="loginForm" class=" loginFormContainer bg-body-tertiary row g-3 d-flex justify-content-center align-items-center  flex-column ">
+    <div class=" col-auto  mb-3">
+      <!-- <label for="exampleFormControlInput1" class="form-label">Email address</label> -->
+      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" formControlName="email">
+    </div>
+    <div class="col-auto mb mb-3">
+      <!-- <label for="inputPassword2" class="visually-hidden">Password</label> -->
+      <input type="password" class="form-control" id="inputPassword2" placeholder="Password" formControlName="password">
+    </div>
+    <div class="col-auto">
+      <button type="submit" class="btn btn-primary mb-3" (click)="loginComponent()">LogIn</button>
+    </div>
+
+    <!-- <button mat-raised-button color="primary" routerLink="/dashboard">
+      Login
+    </button> -->
+  </form>
+</div> 
+
+
+<!-- column-gap-3
+gap-2 -->
