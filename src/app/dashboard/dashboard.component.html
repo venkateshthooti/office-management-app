@@ -1,2 +1,13 @@
 <p>dashboard works!</p>
-<button routerLink="/login">logout</button>
+
+<div class="mainContainer">
+  <div class="leftConatiner">
+
+    <button mat-raised-button color="warn" (click)="logoutComponet()">Logout</button>
+    
+  </div>
+  <div class="rightContainer">
+    <router-outlet></router-outlet>
+
+  </div>
+</div>
