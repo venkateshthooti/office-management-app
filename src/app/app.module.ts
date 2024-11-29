@@ -11,6 +11,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CreateEmployeeComponent } from './create-employee/create-employee.component';
+import { AllEmployeesComponent } from './all-employees/all-employees.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { CreateEmployeeComponent } from './create-employee/create-employee.compo
     LoginComponent,
     DashboardComponent,
     PageNotFoundComponent,
-    CreateEmployeeComponent
+    CreateEmployeeComponent,
+    AllEmployeesComponent
   ],
   imports: [
     BrowserModule,
