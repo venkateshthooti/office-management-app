@@ -19,10 +19,13 @@ export class CreateEmployeeService {
     return this._httpClient.get("https://6572df5d192318b7db412dfe.mockapi.io/employees")
   }
   
-  deleteEmployeesService(num:number):Observable<any>{
+  deleteEmployeesService(num:string):Observable<any>{
     return this._httpClient.delete("https://6572df5d192318b7db412dfe.mockapi.io/employees/"+num)
   }
 
+  filterService(word:string):Observable<any>{
+    return this._httpClient.get("https://6572df5d192318b7db412dfe.mockapi.io/employees?filter="+word);
+  }
 
 
 
