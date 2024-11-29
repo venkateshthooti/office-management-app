@@ -64,7 +64,7 @@ export class CreateEmployeeComponent {
     )
   }
 
-  delete(num:number){
+  deleteHikeCardComponent(num:number){
     this.getEmployeeHikes.removeAt(num)
 
   }

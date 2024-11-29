@@ -8,13 +8,12 @@ import { CreateEmployeeService } from '../create-employee.service';
 })
 export class AllEmployeesComponent {
 
-  public employeeDetails:any=[]
+   employeeDetails:any=[]
+
+  searchWord:string='';
 
   constructor(private _createEmployeeService:CreateEmployeeService){
 
-  }
-
-  getEmployeesComponent(){
     this._createEmployeeService.getEmployeesService().subscribe(
       (data:any)=>{
         this.employeeDetails=data
@@ -23,18 +22,44 @@ export class AllEmployeesComponent {
         alert("No data retrived from api")
       }
     )
+
   }
-  delete(num:number){
+
+  // getEmployeesComponent(){
+ 
+  // }
+
+
+  delete(id:string){
+    console.log(id)
     // this.employeeDetails.splice(num,1)
-    this._createEmployeeService.deleteEmployeesService(num).subscribe(
+    this._createEmployeeService.deleteEmployeesService(id).subscribe(
       (data:any)=>{
         alert("Deleted successfully")
+        location.reload()
       },
       (err:any)=>{
         alert("Deletion failed....!")
       }
     )
-
-
   }
+
+  filterComponent(){
+
+    console.log(this.searchWord)
+    this._createEmployeeService.filterService(this.searchWord).subscribe(
+      (data:any)=>{
+        this.employeeDetails=data;
+      },
+      (err:any)=>{
+        alert("filter functionality not working...!")
+      }
+    )
+  }
+
+
+
+
+
+
 }
