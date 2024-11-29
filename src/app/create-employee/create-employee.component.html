@@ -1,45 +1,73 @@
-<form action="">
-    <!-- <label for="">Id :</label>
+<form action="" [formGroup]="employeeForm">
+  <!-- <label for="">Id :</label>
 <input type="text"> -->
-<label for="">name :</label>
-<input type="text"><br>
-<label for="">company :</label>
-<input type="text"><br>
-<label for="">role :</label>
-<input type="text"><br>
-<label for="">package :</label>
-<input type="number"><br>
-<label for="">email :</label>
-<input type="email"><br>
-<label for="">dob :</label>
-<input type="text"><br>
+  <label for="">name :</label>
+  <input type="text" formControlName="name" /><br />
+  <label for="">company :</label>
+  <input type="text" formControlName="company" /><br />
+  <label for="">role :</label>
+  <input type="text" formControlName="role" /><br />
+  <label for="">package :</label>
+  <input type="number" formControlName="package" /><br />
+  <label for="">email :</label>
+  <input type="email" formControlName="email" /><br />
+  <label for="">dob :</label>
+  <input type="date" formControlName="dob" /><br />
+
+  <div formGroupName="address">
+    <label for="">addressLine :</label>
+    <input type="text" formControlName="addressLine" /><br />
+    <label for="">city :</label>
+    <input type="text" formControlName="city" /><br />
+    <label for="">state :</label>
+    <input type="text" formControlName="state" /><br />
+    <label for="pincode">pincode :</label>
+    <input id="pincode" type="number" formControlName="pincode" /><br />
+  </div>
+
+  <label for="">Gender :</label>
+  <input id="male" type="radio" name="gender" value="male" formControlName="gender" />
+  <label for="male">Male</label>
+  <input id="female" type="radio" name="gender" value="female"  formControlName="gender"/>
+  <label for="female">Female</label><br />
+
+  <label for="">workMode :</label>
+  <input id="WFH" type="radio" name="workMode" value="WFH" formControlName="workMode" />
+  <label for="WFH">WFH</label>
+  <input id="WFO" type="radio" name="workMode" value="WFO" formControlName="workMode" />
+  <label for="WFO">WFO</label><br />
 
 
-<label for="">addressLine :</label>
-<input type="text"><br>
-<label for="">city :</label>
-<input type="text"><br>
-<label for="">state :</label>
-<input type="text"><br>
-<label for="">pincode :</label>
-<input type="text"><br>
+  <button
+  type="button"
+  class="btn btn-warning"
+  (click)="employeeHike()"
+>
+  Add emp Hikes
+  </button>
 
-<label for="">Gender :</label>
+  <div formArrayName="hikes">
+    <div *ngFor="let emp of getEmployeeHikes.controls;let i=index">
+        <div formGroupName="{{i}}">
 
-<input type="radio" name="gender">
-<label for="">Male</label>
+            <h2>Hike {{i+1}}</h2>
+            <label for="">year :</label>
+            <input type="number" formControlName="year"/><br />
+            <label for="">percentage :</label>
+            <input type="number" formControlName="percentage" /><br />
+            <button class="btn btn-danger" (click)="delete(i)">delete</button>
+            <hr>
 
-<input type="radio" name="gender">
-<label for="">Female</label><br>
+        </div>
+    </div>
+  </div>
 
-<label for="">year :</label>
-<input type="text"><br>
-<label for="">percentage :</label>
-<input type="text"><br>
-
-<label for="">workMode :</label>
-<input type="text"><br>
-
-
+ 
+  <button
+    type="button"
+    class="btn btn-primary"
+    (click)="addEmployeeComponent()"
+  >
+    Add employee
+  </button>
 </form>
-

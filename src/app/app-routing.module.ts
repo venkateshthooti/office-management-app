@@ -5,11 +5,13 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AuthenticationGuard } from './authentication.guard';
 import { CreateEmployeeComponent } from './create-employee/create-employee.component';
+import { AllEmployeesComponent } from './all-employees/all-employees.component';
 
 const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'dashboard',canActivate:[AuthenticationGuard],component:DashboardComponent,children:[
     {path:'createEmployee',component:CreateEmployeeComponent},
+    {path:'allEmployees',component:AllEmployeesComponent}
   ]},
   {path:'',component:LoginComponent},
   {path:'**',component:PageNotFoundComponent}
