@@ -26,7 +26,13 @@ export class CreateEmployeeService {
   filterService(word:string):Observable<any>{
     return this._httpClient.get("https://6572df5d192318b7db412dfe.mockapi.io/employees?filter="+word);
   }
+  sortService(column:string ,sortOrder:string):Observable<any>{
+    return this._httpClient.get("https://6572df5d192318b7db412dfe.mockapi.io/employees?sortBy="+column+"&order="+sortOrder)
+}
 
+paginationService(pageLimit:number,count:number):Observable<any>{
+ return this._httpClient.get("https://6572df5d192318b7db412dfe.mockapi.io/employees?limit="+pageLimit+"&page="+count)
+}
 
 
 

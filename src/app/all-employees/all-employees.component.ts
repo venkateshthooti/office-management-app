@@ -8,9 +8,12 @@ import { CreateEmployeeService } from '../create-employee.service';
 })
 export class AllEmployeesComponent {
 
-   employeeDetails:any=[]
-
+  employeeDetails:any=[]
   searchWord:string='';
+  sortColumnName:string=''
+  sortOrder:string=''
+  pageLimit:number=0;
+  count:number=0;
 
   constructor(private _createEmployeeService:CreateEmployeeService){
 
@@ -53,6 +56,29 @@ export class AllEmployeesComponent {
       },
       (err:any)=>{
         alert("filter functionality not working...!")
+      }
+    )
+  }
+
+  sortComponent(){
+    this._createEmployeeService.sortService(this.sortColumnName,this.sortOrder).subscribe(
+      (data:any)=>{
+        this.employeeDetails=data
+      },
+      (err:any)=>{
+        alert("Sorting failed")   
+      }
+    )
+  }
+
+  paginationComponent(){
+    this._createEmployeeService.paginationService(this.pageLimit,this.count).subscribe(
+      (data:any)=>{
+        this.employeeDetails=data
+      },
+      ()=>{
+        alert("Pagination failed...!")
+
       }
     )
   }
