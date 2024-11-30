@@ -1,8 +1,11 @@
 <!-- <p>all-employees works!</p> -->
 
 <!-- <button (click)="getEmployeesComponent()">Show all employees</button> -->
-<input type="text" placeholder="filter by searching a word..." (keyup)="filterComponent()" [(ngModel)]="searchWord">
-<select name="" id="" [(ngModel)]="sortColumnName">
+<div class="d-flex">
+<input class="form-control w-25" type="text" placeholder="filter by searching a word..." (keyup)="filterComponent()" [(ngModel)]="searchWord">
+
+<select a class="form-select form-select-sm w-25 " name="" id="" [(ngModel)]="sortColumnName">
+    
     <option value="id">id</option>
     <option value="name">name</option>
     <option value="company">company</option>
@@ -12,25 +15,26 @@
     <option value="gender">gender</option>
     
 </select>
-<select name="" id="" [(ngModel)]="sortOrder">
+<select class="form-select form-select-sm w-25 " name="" id="" [(ngModel)]="sortOrder">
 
     <option value="asc">Ascending</option>
     <option value="desc">Descending</option>
 </select>
 <button (click)="sortComponent()" class="btn btn-warning">Sort</button>
 
-<select name="" id="" [(ngModel)]="pageLimit">
+
+<select class="form-select form-select-sm w-25 " name="" id="" [(ngModel)]="pageLimit">
     <option value="10">10</option>
     <option value="20">20</option>
     <option value="30">30</option>
 </select>
-<select name="" id="" [(ngModel)]="count">
+<select class="form-select form-select-sm w-25 " name="" id="" [(ngModel)]="count">
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
 </select>
-<button (click)="paginationComponent()">Pagination</button>
-
+<button class="btn btn-success" (click)="paginationComponent()">Pagination</button>
+</div>
 <table class="table table-success table-striped">
     <thead>
         <tr>
@@ -60,7 +64,7 @@
             <td>{{emp.role}}</td>
             <td>{{emp.email}}</td>
             <td [ngStyle]="{color:emp.package>900000?'green':'red'}">{{emp.package}}</td>
-            <td>{{emp.dob}}</td>
+            <td>{{emp.dob | date:"yyyy/mm/dd"}}</td>
             <td>{{emp.address?.addressLine}},
                {{emp.address?.city}},
                 {{emp.address?.state}},
