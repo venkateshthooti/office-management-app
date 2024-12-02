@@ -1,90 +1,116 @@
 <!-- <p>all-employees works!</p> -->
 
 <!-- <button (click)="getEmployeesComponent()">Show all employees</button> -->
-<div class="d-flex">
-<input class="form-control w-25" type="text" placeholder="filter by searching a word..." (keyup)="filterComponent()" [(ngModel)]="searchWord">
+<div class="mainContainer">
+  <div class="filtersContainerDiv d-flex justify-content-between">
+    <input
+      class="form-control "
+      type="text"
+      placeholder="filter by searching a word..."
+      (keyup)="filterComponent()"
+      [(ngModel)]="searchWord"
+    />
 
-<select a class="form-select form-select-sm w-25 " name="" id="" [(ngModel)]="sortColumnName">
-    
-    <option value="id">id</option>
-    <option value="name">name</option>
-    <option value="company">company</option>
-    <option value="role">role</option>
-    <option value="package">package</option>
-    <option value="workMode">workMode</option>
-    <option value="gender">gender</option>
-    
-</select>
-<select class="form-select form-select-sm w-25 " name="" id="" [(ngModel)]="sortOrder">
+    <select
+      a
+      class="form-select form-select-sm "
+      name=""
+      id=""
+      [(ngModel)]="sortColumnName"
+    >
+      <option value="id">id</option>
+      <option value="name">name</option>
+      <option value="company">company</option>
+      <option value="role">role</option>
+      <option value="package">package</option>
+      <option value="workMode">workMode</option>
+      <option value="gender">gender</option>
+    </select>
+    <select
+      class="form-select form-select-sm "
+      name=""
+      id=""
+      [(ngModel)]="sortOrder"
+    >
+      <option value="asc">Ascending</option>
+      <option value="desc">Descending</option>
+    </select>
+    <button (click)="sortComponent()" class="btn btn-warning">Sort</button>
 
-    <option value="asc">Ascending</option>
-    <option value="desc">Descending</option>
-</select>
-<button (click)="sortComponent()" class="btn btn-warning">Sort</button>
-
-
-<select class="form-select form-select-sm w-25 " name="" id="" [(ngModel)]="pageLimit">
-    <option value="10">10</option>
-    <option value="20">20</option>
-    <option value="30">30</option>
-</select>
-<select class="form-select form-select-sm w-25 " name="" id="" [(ngModel)]="count">
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-</select>
-<button class="btn btn-success" (click)="paginationComponent()">Pagination</button>
+    <select
+      class="form-select form-select-sm "
+      name=""
+      id=""
+      [(ngModel)]="pageLimit"
+    >
+      <option value="10">10</option>
+      <option value="20">20</option>
+      <option value="30">30</option>
+    </select>
+    <select
+      class="form-select form-select-sm w-25"
+      name=""
+      id=""
+      [(ngModel)]="count"
+    >
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+    </select>
+    <button class="btn btn-success" (click)="paginationComponent()">
+      Pagination
+    </button>
+  </div>
+  <div class="tableDiv">
+    <table class="table table-success table-striped table-bordered">
+      <thead class="table-warning">
+        <tr class="tableheader">
+          <th>Sno</th>
+          <th>id</th>
+          <th>name</th>
+          <th>company</th>
+          <th>role</th>
+          <th>email</th>
+          <th>package</th>
+          <th>dob</th>
+          <th>address</th>
+          <th>hikes</th>
+          <th>workMode</th>
+          <th>gender</th>
+          <th>DELETE/VIEW</th>
+        </tr>
+      </thead>
+      <tbody class="">
+        <tr *ngFor="let emp of employeeDetails; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ emp.id }}</td>
+          <td>{{ emp.name }}</td>
+          <td>{{ emp.company }}</td>
+          <td>{{ emp.role }}</td>
+          <td>{{ emp.email }}</td>
+          <td [ngStyle]="{ color: emp.package > 900000 ? 'green' : 'red' }">
+            {{ emp.package }}
+          </td>
+          <td>{{ emp.dob | date : "yyyy/mm/dd" }}</td>
+          <td>
+            {{ emp.address?.addressLine }}, {{ emp.address?.city }},
+            {{ emp.address?.state }}, {{ emp.address?.pincode }}
+          </td>
+          <td>
+            {{ emp.hikes?.year }},
+            {{ emp.hikes?.percentage }}
+          </td>
+          <td>{{ emp.workMode }}</td>
+          <td>{{ emp.gender }}</td>
+          <td class="">
+            <button class="btn btn-danger" (click)="delete(emp.id)">
+              delete
+            </button>
+            <button class="btn btn-info">View</button>
+          </td>
+        </tr>
+        <tr></tr>
+      </tbody>
+    </table>
+  </div>
 </div>
-<table class="table table-success table-striped">
-    <thead>
-        <tr>
-            <th>Sno</th>
-            <th>id</th>
-            <th>name</th>
-            <th>company</th>
-            <th>role</th>
-            <th>email</th>
-            <th>package</th>
-            <th>dob</th>
-            <th>address</th>
-            <th>hikes</th>
-            <th>workMode</th>
-            <th>gender</th>
-            <th>DELETE/VIEW</th>
-
-        </tr>
-
-    </thead>
-    <tbody>
-        <tr *ngFor="let emp of employeeDetails;let i=index ">
-            <td>{{i+1}}</td>
-            <td>{{emp.id}}</td>
-            <td>{{emp.name}}</td>
-            <td>{{emp.company}}</td>
-            <td>{{emp.role}}</td>
-            <td>{{emp.email}}</td>
-            <td [ngStyle]="{color:emp.package>900000?'green':'red'}">{{emp.package}}</td>
-            <td>{{emp.dob | date:"yyyy/mm/dd"}}</td>
-            <td>{{emp.address?.addressLine}},
-               {{emp.address?.city}},
-                {{emp.address?.state}},
-                {{emp.address?.pincode}}</td>
-            <td>{{emp.hikes?.year}},
-                {{emp.hikes?.percentage}}
-            </td>
-            <td>{{emp.workMode}}</td>
-            <td>{{emp.gender}}</td>
-            <td class="">
-                <button class="btn btn-danger" (click)="delete(emp.id)">delete</button>
-                <button class="btn btn-info">View</button>
-
-            </td>
-          
-            
-        </tr>
-        <tr>
-            
-        </tr>
-
-    </tbody>
-  </table>

@@ -9,6 +9,7 @@ import { CreateEmployeeService } from '../create-employee.service';
 export class AllEmployeesComponent {
 
   employeeDetails:any=[]
+  
   searchWord:string='';
   sortColumnName:string=''
   sortOrder:string=''
