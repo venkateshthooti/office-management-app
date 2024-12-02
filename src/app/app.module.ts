@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CreateEmployeeComponent } from './create-employee/create-employee.component';
 import { AllEmployeesComponent } from './all-employees/all-employees.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AllEmployeesComponent } from './all-employees/all-employees.component';
     DashboardComponent,
     PageNotFoundComponent,
     CreateEmployeeComponent,
-    AllEmployeesComponent
+    AllEmployeesComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

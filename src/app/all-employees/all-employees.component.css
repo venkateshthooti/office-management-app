@@ -1,0 +1,21 @@
+.mainContainer{
+    width: 100%;
+}
+
+.filtersContainerDiv{
+    width: 100%;
+    position: sticky;
+    top: 0;
+}
+.tableheader{
+    /* width: 100%; */
+    position: sticky;
+    top: 38px;
+    
+}
+.tableDiv{
+    /* width: 100%; */
+}
+.table{
+    width: 100% !important;
+}

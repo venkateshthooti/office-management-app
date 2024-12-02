@@ -7,11 +7,18 @@ import { Route, Router } from '@angular/router';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent {
-  
   constructor(private _router: Router) {}
 
   logoutComponet() {
-    this._router.navigateByUrl('/login');
-    sessionStorage.removeItem('token');
+    if (confirm('Are you sure you want to logout')) {
+      this._router.navigateByUrl('/login');
+      sessionStorage.removeItem('token');
+    }
+    // if (confirm('Are you sure you want to logout')) {
+    //   //go to login
+    //   this._router.navigateByUrl('/login');
+    //   // delete token
+    //   sessionStorage.removeItem('token');
+    // }
   }
 }

@@ -1,28 +1,71 @@
 <form action="" [formGroup]="employeeForm">
   <!-- <label for="">Id :</label>
 <input type="text"> -->
+<div class="d-flex mb-1">
   <label for="">name :</label>
-  <input type="text" formControlName="name" /><br />
+  <input class="form-control w-25" type="text" formControlName="name" />
+</div>
+  <div *ngIf="employeeForm.get('name')?.touched && employeeForm.get('name')?.invalid">
+    <p *ngIf="employeeForm.get('name')?.errors?.['required']">Name is required</p>
+    <p *ngIf="employeeForm.get('name')?.errors?.['minlength']">Name minimum length is 5 characters</p>
+    <p *ngIf="employeeForm.get('name')?.errors?.['maxlength']">Name maximum length is 15 characters</p>
+
+  </div>
+  
+
+
+  <div class="d-flex  mb-1">
   <label for="">company :</label>
-  <input type="text" formControlName="company" /><br />
+  <input class="form-control w-25"  type="text" formControlName="company" /><br />
+  </div>  
+
+  <div class="d-flex  mb-1">
   <label for="">role :</label>
-  <input type="text" formControlName="role" /><br />
+  <input class="form-control w-25"  type="text" formControlName="role" /><br />
+</div>
+
+<div class="d-flex  mb-1">
   <label for="">package :</label>
-  <input type="number" formControlName="package" /><br />
+  <input class="form-control w-25"  type="number" formControlName="package" /><br />
+</div>
+
+<div class="d-flex  mb-1">
   <label for="">email :</label>
-  <input type="email" formControlName="email" /><br />
+  <input class="form-control w-25" type="email" formControlName="email" />
+</div>
+  <div *ngIf="employeeForm.get('email')?.touched && employeeForm.get('email')?.invalid">
+    <p *ngIf="employeeForm.get('email')?.errors?.['required']">Email is reuired</p>
+    <p *ngIf="employeeForm.get('email')?.errors?.['email']">Email should have &#64; symbol</p>
+  </div>
+
+  <div class="d-flex  mb-1">
   <label for="">dob :</label>
-  <input type="date" formControlName="dob" /><br />
+  <input class="form-control w-25" type="date" formControlName="dob" /><br />
+</div>
 
   <div formGroupName="address">
+    <div class="d-flex  mb-1">
     <label for="">addressLine :</label>
-    <input type="text" formControlName="addressLine" /><br />
+    <input class="form-control w-25"  type="text" formControlName="addressLine" /><br />
+  </div>
+  <div class="d-flex  mb-1">
     <label for="">city :</label>
-    <input type="text" formControlName="city" /><br />
+    <input class="form-control w-25"  type="text" formControlName="city" /><br />
+  </div>
+    <div class="d-flex  mb-1">
     <label for="">state :</label>
-    <input type="text" formControlName="state" /><br />
+    <input class="form-control w-25"  type="text" formControlName="state" /><br />
+  </div>
+    <div class="d-flex  mb-1">
     <label for="pincode">pincode :</label>
-    <input id="pincode" type="number" formControlName="pincode" /><br />
+    <input class="form-control w-25"  id="pincode" type="number" formControlName="pincode" />
+    </div>
+    <div *ngIf="employeeForm.get('address')?.get('pincode')?.touched && employeeForm.get('address')?.get('pincode')?.invalid">
+      <p *ngIf="employeeForm.get('address')?.get('pincode')?.errors?.['required']">Pincode is required</p>
+      <p *ngIf="employeeForm.get('address')?.get('pincode')?.errors?.['min']">Pincode should have minimum 6 numbers</p>
+      <p *ngIf="employeeForm.get('address')?.get('pincode')?.errors?.['max']">Pincode should have maximum 6 numbers</p>
+    </div>
+   
   </div>
 
   <label for="">Gender :</label>
@@ -32,10 +75,25 @@
   <label for="female">Female</label><br />
 
   <label for="">workMode :</label>
-  <input id="WFH" type="radio" name="workMode" value="WFH" formControlName="workMode" />
+  <input   id="WFH" type="radio" name="workMode" value="WFH" formControlName="workMode" />
   <label for="WFH">WFH</label>
-  <input id="WFO" type="radio" name="workMode" value="WFO" formControlName="workMode" />
+  <input   id="WFO" type="radio" name="workMode" value="WFO" formControlName="workMode" />
   <label for="WFO">WFO</label><br />
+
+  <div *ngIf="employeeForm.get('workMode')?.value=='WFH'">
+    <div class="d-flex  mb-1">
+    <label for="">Wifi Bill :</label>
+    <input class="form-control w-25"  type="number" name="" id="" formControlName="wifiBill">
+  </div>
+  </div>
+
+  <div *ngIf="employeeForm.get('workMode')?.value=='WFO'">
+    <div class="d-flex  mb-1">
+    <label for="">Travelling Bill :</label>
+    <input class="form-control w-25"  type="number" name="" id="" formControlName="travellingBill">
+  </div>
+  </div>
+
 
 
   <button
@@ -51,10 +109,14 @@
         <div formGroupName="{{i}}">
 
             <h2>Hike {{i+1}}</h2>
+            <div class="d-flex  mb-1">
             <label for="">year :</label>
-            <input type="number" formControlName="year"/><br />
+            <input class="form-control w-25"  type="number" formControlName="year"/>
+          </div>
+          <div class="d-flex  mb-1">
             <label for="">percentage :</label>
-            <input type="number" formControlName="percentage" /><br />
+            <input class="form-control w-25"  type="number" formControlName="percentage" />
+          </div>
             <button class="btn btn-danger" (click)="deleteHikeCardComponent(i)">delete</button>
             <hr>
 
